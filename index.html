@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="DriftFest — one venue, all the smoke. A fictional motorsport festival website concept set at NEC Birmingham.">
+  <meta property="og:title" content="DriftFest — One venue. All the smoke.">
+  <meta property="og:description" content="A fictional motorsport festival concept. Explore drifting, show cars, paddock culture and more.">
+  <title>DriftFest — One venue. All the smoke.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #111111;
+      --ink-soft: #262626;
+      --paper: #f5f4f0;
+      --paper-deep: #e9e7e1;
+      --white: #ffffff;
+      --muted: #6d6b67;
+      --line: #d9d7d1;
+      --red: #d9432f;
+      --display: "Barlow Condensed", Impact, sans-serif;
+      --body: "Inter", Arial, sans-serif;
+      --page: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+
+    .concept-bar {
+      min-height: 30px; padding: 5px 5.5%; background: var(--ink); color: #d8d7d2;
+      display: flex; align-items: center; justify-content: space-between; gap: 18px;
+      font-size: 9px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+    }
+    .concept-bar strong { color: #fff; font-weight: 700; }
+
+    .header {
+      height: 78px; position: sticky; top: 0; z-index: 30; padding: 0 5.5%;
+      background: rgba(245,244,240,.97); border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .wordmark { display: inline-flex; align-items: baseline; font: 900 32px/.9 var(--display); letter-spacing: .4px; }
+    .wordmark span { color: var(--red); }
+    .nav { display: flex; align-items: center; gap: 34px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; }
+    .nav a:not(.nav-ticket) { color: #383735; }
+    .nav a:not(.nav-ticket):hover { color: var(--red); }
+    .nav-ticket, .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 21px; background: var(--red); color: white; border: 1px solid var(--red); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .8px; transition: background .18s ease, color .18s ease; }
+    .nav-ticket:hover, .button:hover { background: #b83223; border-color: #b83223; }
+    .menu-toggle { display: none; width: 44px; height: 42px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 22px; cursor: pointer; }
+
+    .hero { min-height: 670px; height: min(76vw, 790px); max-height: 790px; position: relative; overflow: hidden; background: #202020; color: white; }
+    .hero-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 53%; }
+    .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.56) 36%, rgba(0,0,0,.10) 76%), linear-gradient(0deg, rgba(0,0,0,.45), transparent 38%); }
+    .hero-content { position: relative; z-index: 1; max-width: var(--page); height: 100%; margin: auto; padding: 120px 30px 95px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+    .hero-kicker { margin: 0 0 20px; color: #f3f0e8; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+    .hero h1 { max-width: 780px; margin: 0; font: 900 clamp(76px, 10.5vw, 145px)/.77 var(--display); letter-spacing: -1.5px; text-transform: uppercase; }
+    .hero h1 span { display: block; color: #efefeb; }
+    .hero-copy { max-width: 460px; margin: 28px 0 28px; color: rgba(255,255,255,.88); font-size: 15px; line-height: 1.75; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+    .hero-link { color: white; font-size: 10px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,.65); padding: 9px 0; }
+    .hero-meta { position: absolute; z-index: 1; left: max(5.5%, calc((100% - var(--page))/2 + 30px)); right: 5.5%; bottom: 27px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,.86); font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .quick-strip { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--white); border-bottom: 1px solid var(--line); padding: 25px max(5.5%, calc((100% - var(--page))/2 + 30px)); }
+    .quick-item { padding: 1px 24px; border-right: 1px solid var(--line); }
+    .quick-item:first-child { padding-left: 0; }
+    .quick-item:last-child { border: 0; }
+    .quick-item strong { display: block; font: 700 25px/.95 var(--display); text-transform: uppercase; }
+    .quick-item span { display: block; margin-top: 7px; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+    .section { max-width: var(--page); margin: 0 auto; padding: 104px 30px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 44px; margin-bottom: 43px; }
+    .section-kicker { margin: 0 0 13px; color: var(--red); font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
+    .section-title { margin: 0; font: 800 clamp(52px, 6vw, 78px)/.84 var(--display); text-transform: uppercase; letter-spacing: -.5px; }
+    .section-intro { max-width: 390px; margin: 0 0 5px; color: #66635e; font-size: 13px; line-height: 1.8; }
+
+    .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .experience-card { min-width: 0; background: var(--white); }
+    .experience-card img { width: 100%; height: 250px; object-fit: cover; }
+    .experience-copy { padding: 22px 23px 25px; }
+    .experience-copy small { color: var(--red); font-size: 9px; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase; }
+    .experience-copy h3 { margin: 9px 0 7px; font: 700 31px/.95 var(--display); text-transform: uppercase; }
+    .experience-copy p { margin: 0; max-width: 340px; color: var(--muted); font-size: 12px; line-height: 1.75; }
+
+    .story-section { background: var(--ink); color: white; }
+    .story-inner { max-width: var(--page); margin: auto; padding: 0 30px; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 72px; }
+    .story-photo { width: 100%; height: 520px; object-fit: cover; }
+    .story-copy { padding: 75px 0; }
+    .story-copy .section-kicker { color: #f06a55; }
+    .story-copy .section-title { max-width: 540px; }
+    .story-copy p { color: #c2c0bb; font-size: 13px; line-height: 1.9; max-width: 450px; margin: 23px 0 27px; }
+    .story-list { list-style: none; margin: 0; padding: 0; max-width: 460px; }
+    .story-list li { padding: 13px 0; border-top: 1px solid #393939; font-size: 12px; font-weight: 600; }
+
+    .schedule-section { background: var(--paper); }
+    .filters { display: flex; flex-wrap: wrap; gap: 7px; }
+    .filter { padding: 9px 14px; background: transparent; border: 1px solid #c8c5bd; color: #494743; font-size: 9px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; cursor: pointer; }
+    .filter[aria-pressed="true"], .filter:hover { background: var(--ink); border-color: var(--ink); color: white; }
+    .schedule-list { border-top: 1px solid var(--line); }
+    .schedule-row { display: grid; grid-template-columns: 100px 1fr 170px; align-items: center; gap: 20px; padding: 23px 4px; border-bottom: 1px solid var(--line); }
+    .schedule-row[hidden] { display: none; }
+    .schedule-time { font: 700 30px/.9 var(--display); }
+    .schedule-main small { color: var(--red); font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .schedule-main h3 { margin: 4px 0 2px; font: 700 27px/1 var(--display); text-transform: uppercase; }
+    .schedule-main p { margin: 0; color: var(--muted); font-size: 11px; }
+    .schedule-location { text-align: right; color: #66635e; font-size: 9px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    .schedule-note { margin: 19px 0 0; color: #76736e; font-size: 10px; }
+
+    .venue-section { background: var(--paper-deep); }
+    .venue-inner { max-width: var(--page); margin: auto; padding: 100px 30px; display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 70px; }
+    .venue-copy .section-title { max-width: 450px; }
+    .venue-copy p:not(.section-kicker) { color: #66635e; font-size: 13px; line-height: 1.85; max-width: 440px; margin: 22px 0; }
+    .venue-address { border-top: 1px solid #c9c6bf; padding-top: 17px; margin-top: 26px; }
+    .venue-address strong { display: block; font-size: 13px; }
+    .venue-address span { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; }
+    .venue-image-wrap { min-width: 0; }
+    .venue-image-wrap img { width: 100%; height: 490px; object-fit: cover; }
+    .photo-caption { margin-top: 9px; color: #74716b; font-size: 9px; }
+
+    .tickets-section { background: var(--white); }
+    .ticket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .ticket-card { padding: 29px 27px 27px; border: 1px solid var(--line); background: #fff; display: flex; flex-direction: column; min-height: 380px; }
+    .ticket-card.featured { border: 2px solid var(--ink); padding: 28px 26px 26px; }
+    .ticket-label { color: var(--red); font-size: 9px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; }
+    .ticket-card h3 { margin: 15px 0 5px; font: 700 38px/.9 var(--display); text-transform: uppercase; }
+    .ticket-price { margin: 17px 0 15px; font: 700 37px/.9 var(--display); }
+    .ticket-price small { display: block; margin-top: 6px; color: var(--muted); font: 600 9px/1.3 var(--body); letter-spacing: .4px; }
+    .ticket-card ul { list-style: none; padding: 16px 0 20px; margin: 0 0 18px; border-top: 1px solid var(--line); flex: 1; }
+    .ticket-card li { padding: 5px 0; color: #55524e; font-size: 11px; }
+    .ticket-card li::before { content: "—"; margin-right: 9px; color: var(--red); }
+    .ticket-card .button { width: 100%; cursor: pointer; }
+    .ticket-card .button-secondary { color: var(--ink); border-color: var(--ink); background: white; }
+    .ticket-card .button-secondary:hover { background: var(--ink); color: white; }
+    .tickets-note { margin: 22px 0 0; color: #77736e; font-size: 10px; line-height: 1.6; }
+
+    .faq-section { max-width: var(--page); margin: auto; padding: 100px 30px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; }
+    .faq-intro p { max-width: 300px; color: var(--muted); font-size: 12px; }
+    .faq-list details { border-top: 1px solid var(--line); padding: 19px 0; }
+    .faq-list details:last-child { border-bottom: 1px solid var(--line); }
+    .faq-list summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; cursor: pointer; list-style: none; font-size: 13px; font-weight: 700; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: var(--red); font-size: 20px; font-weight: 400; }
+    .faq-list details[open] summary::after { content: "−"; }
+    .faq-list details p { max-width: 600px; margin: 11px 32px 0 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+
+    .footer { padding: 45px 5.5%; background: var(--ink); color: white; }
+    .footer-top { max-width: var(--page); margin: auto; display: flex; justify-content: space-between; align-items: start; gap: 40px; }
+    .footer .wordmark { font-size: 34px; }
+    .footer-tagline { margin: 9px 0 0; color: #bbb9b3; font-size: 11px; }
+    .footer-links { display: flex; gap: 22px; flex-wrap: wrap; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; }
+    .footer-links a:hover { color: #ef6a55; }
+    .footer-bottom { max-width: var(--page); margin: 34px auto 0; padding-top: 17px; border-top: 1px solid #383838; display: flex; justify-content: space-between; gap: 22px; color: #92908a; font-size: 9px; line-height: 1.8; }
+    .credits { max-width: 700px; }
+    .credits a { color: #d8d6cf; text-decoration: underline; text-underline-offset: 2px; }
+
+    .modal-backdrop { position: fixed; inset: 0; z-index: 80; background: rgba(0,0,0,.72); padding: 20px; display: grid; place-items: center; }
+    .modal-backdrop[hidden] { display: none; }
+    .modal { position: relative; width: min(100%, 460px); padding: 36px; background: var(--paper); color: var(--ink); }
+    .modal-close { position: absolute; top: 12px; right: 14px; border: 0; background: transparent; font-size: 26px; cursor: pointer; }
+    .modal h2 { margin: 4px 0 10px; font: 700 43px/.95 var(--display); text-transform: uppercase; }
+    .modal p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .modal .button { margin-top: 12px; cursor: pointer; }
+
+    @media (max-width: 900px) {
+      .nav { gap: 19px; }
+      .hero { min-height: 640px; }
+      .story-inner { gap: 40px; }
+      .story-photo { height: 460px; }
+      .venue-inner { gap: 40px; }
+      .venue-image-wrap img { height: 420px; }
+    }
+    @media (max-width: 700px) {
+      .concept-bar { justify-content: center; text-align: center; font-size: 8px; }
+      .concept-bar span { display: none; }
+      .header { height: 68px; }
+      .wordmark { font-size: 29px; }
+      .menu-toggle { display: block; }
+      .nav { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 5.5% 22px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav.open { display: flex; }
+      .nav a { padding: 13px 0; border-bottom: 1px solid var(--line); }
+      .nav .nav-ticket { margin-top: 13px; padding: 14px 17px; text-align: center; }
+      .hero { min-height: 630px; height: 78vh; }
+      .hero-image { object-position: 58% center; }
+      .hero-shade { background: linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.30)), linear-gradient(0deg, rgba(0,0,0,.42), transparent 48%); }
+      .hero-content { padding: 80px 25px 110px; justify-content: center; }
+      .hero h1 { font-size: clamp(76px, 17vw, 112px); }
+      .hero-copy { max-width: 360px; font-size: 13px; }
+      .hero-meta { left: 25px; right: 25px; bottom: 19px; font-size: 8px; }
+      .quick-strip { grid-template-columns: repeat(2,1fr); padding: 19px 25px; row-gap: 18px; }
+      .quick-item { padding: 0 10px; border-right: 0; }
+      .quick-item:nth-child(odd) { padding-left: 0; border-right: 1px solid var(--line); }
+      .quick-item strong { font-size: 23px; }
+      .section { padding: 75px 25px; }
+      .section-head { display: block; margin-bottom: 29px; }
+      .section-intro { margin-top: 21px; }
+      .section-title { font-size: 61px; }
+      .experience-grid { grid-template-columns: 1fr; gap: 16px; }
+      .experience-card img { height: 230px; }
+      .story-inner { grid-template-columns: 1fr; gap: 0; padding: 0 25px; }
+      .story-photo { height: 300px; margin-top: 60px; }
+      .story-copy { padding: 45px 0 70px; }
+      .schedule-row { grid-template-columns: 65px 1fr; gap: 13px; padding: 19px 0; }
+      .schedule-time { font-size: 25px; }
+      .schedule-location { grid-column: 2; text-align: left; font-size: 8px; margin-top: -8px; }
+      .schedule-main h3 { font-size: 24px; }
+      .venue-inner { grid-template-columns: 1fr; gap: 30px; padding: 75px 25px; }
+      .venue-image-wrap img { height: 300px; }
+      .ticket-grid { grid-template-columns: 1fr; gap: 13px; }
+      .ticket-card { min-height: auto; }
+      .faq-section { grid-template-columns: 1fr; gap: 27px; padding: 75px 25px; }
+      .footer { padding: 38px 25px 25px; }
+      .footer-top { flex-direction: column; gap: 25px; }
+      .footer-bottom { flex-direction: column; gap: 13px; margin-top: 26px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="concept-bar"><strong>Fictional festival concept</strong><span>NEC Birmingham · Saturday 17 July 2027</span></div>
+
+  <header class="header">
+    <a class="wordmark" href="#home" aria-label="DriftFest home">DRIFT<span>FEST</span></a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#experience">The festival</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#venue">Venue</a>
+      <a href="#tickets" class="nav-ticket">Tickets <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="https://images.pexels.com/photos/25637442/pexels-photo-25637442.jpeg?cs=srgb&amp;dl=pexels-jakewymoore-25637442.jpg&amp;fm=jpg" alt="A drift car sliding around a circuit with smoke rising behind it" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="hero-kicker">NEC Birmingham &nbsp; / &nbsp; 17.07.27</p>
+        <h1 id="hero-title">ONE VENUE.<span>ALL THE SMOKE.</span></h1>
+        <p class="hero-copy">A full day for the cars, the drivers and the culture around them. Get trackside, explore the paddock and take in the atmosphere.</p>
+        <div class="hero-actions">
+          <a class="button" href="#experience">Explore DriftFest <span aria-hidden="true">↗</span></a>
+          <a class="hero-link" href="#schedule">View the programme</a>
+        </div>
+      </div>
+      <div class="hero-meta"><span>Drifting · Show cars · Paddock culture</span><span>Your day, sorted.</span></div>
+    </section>
+
+    <section class="quick-strip" aria-label="Festival highlights">
+      <div class="quick-item"><strong>Track action</strong><span>Practice & tandem displays</span></div>
+      <div class="quick-item"><strong>Show cars</strong><span>Modified builds & displays</span></div>
+      <div class="quick-item"><strong>Paddock</strong><span>Behind the scenes</span></div>
+      <div class="quick-item"><strong>Festival</strong><span>Food, music & community</span></div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-head">
+        <div><p class="section-kicker">More than trackside</p><h2 class="section-title">Find your<br>kind of action.</h2></div>
+        <p class="section-intro">From the noise of the arena to the detail in the paddock, DriftFest brings different sides of car culture together in one place.</p>
+      </div>
+      <div class="experience-grid">
+        <article class="experience-card">
+          <img src="https://images.pexels.com/photos/20449311/pexels-photo-20449311.jpeg?cs=srgb&amp;dl=pexels-daniqux-20449311.jpg&amp;fm=jpg" alt="A drift car powers through a corner as spectators watch" loading="lazy">
+          <div class="experience-copy"><small>01 / On track</small><h3>The Drift Arena</h3><p>Close-up viewing for practice sessions, tandem displays and the headline battles.</p></div>
+        </article>
+        <article class="experience-card">
+          <img src="https://images.pexels.com/photos/32305552/pexels-photo-32305552.jpeg?cs=srgb&amp;dl=pexels-mahsum-ograk-784403055-32305552.jpg&amp;fm=jpg" alt="A prepared drift car on a motorsport circuit" loading="lazy">
+          <div class="experience-copy"><small>02 / Behind the scenes</small><h3>Paddock & pits</h3><p>Get closer to the builds, meet the teams and see what goes into preparing a drift car.</p></div>
+        </article>
+        <article class="experience-card">
+          <img src="https://images.pexels.com/photos/32493589/pexels-photo-32493589.jpeg?cs=srgb&amp;dl=pexels-fbo-media-535159577-32493589.jpg&amp;fm=jpg" alt="A modified show car parked outside an industrial garage" loading="lazy">
+          <div class="experience-copy"><small>03 / Car culture</small><h3>Show & shine</h3><p>A display of distinctive builds, thoughtful details and cars from across the scene.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="story-section">
+      <div class="story-inner">
+        <div class="story-copy">
+          <p class="section-kicker">Built around the culture</p>
+          <h2 class="section-title">Not just a<br>day at the track.</h2>
+          <p>DriftFest is imagined as a meeting point for drifting and the wider automotive community. Spend the day watching the action, exploring the paddock, checking out the show cars or taking a break with food and music.</p>
+          <ul class="story-list">
+            <li>Open practice and driver introductions</li>
+            <li>Tandem demonstrations and qualifying</li>
+            <li>Show car displays and paddock access</li>
+            <li>Street food and festival spaces</li>
+          </ul>
+        </div>
+        <img class="story-photo" src="https://images.pexels.com/photos/15824808/pexels-photo-15824808.jpeg?cs=srgb&amp;dl=pexels-ogproductionz-15824808.jpg&amp;fm=jpg" alt="A drift car in motion at a motorsport event" loading="lazy">
+      </div>
+    </section>
+
+    <section class="section schedule-section" id="schedule">
+      <div class="section-head">
+        <div><p class="section-kicker">Plan your day</p><h2 class="section-title">The programme.</h2></div>
+        <div class="filters" role="group" aria-label="Filter schedule">
+          <button class="filter" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" data-filter="track" aria-pressed="false">Track</button>
+          <button class="filter" data-filter="paddock" aria-pressed="false">Paddock</button>
+          <button class="filter" data-filter="festival" aria-pressed="false">Festival</button>
+        </div>
+      </div>
+      <div class="schedule-list">
+        <article class="schedule-row" data-category="track"><time class="schedule-time">09:30</time><div class="schedule-main"><small>Track / Opening</small><h3>Open practice</h3><p>First runs of the day and a chance to see the drivers find their rhythm.</p></div><div class="schedule-location">Drift Arena</div></article>
+        <article class="schedule-row" data-category="paddock"><time class="schedule-time">10:15</time><div class="schedule-main"><small>Paddock / Meet the drivers</small><h3>Driver meet & greet</h3><p>Meet the drivers and get an introduction to the teams and their builds.</p></div><div class="schedule-location">Paddock & pits</div></article>
+        <article class="schedule-row" data-category="track"><time class="schedule-time">11:00</time><div class="schedule-main"><small>Track / Demonstration</small><h3>Tandem showcase</h3><p>Paired cars take to the circuit for a synchronised drift display.</p></div><div class="schedule-location">Drift Arena</div></article>
+        <article class="schedule-row" data-category="festival"><time class="schedule-time">12:00</time><div class="schedule-main"><small>Festival / Food</small><h3>Street food break</h3><p>Take a break, explore the food stalls and spend time around the festival.</p></div><div class="schedule-location">Food yard</div></article>
+        <article class="schedule-row" data-category="track"><time class="schedule-time">13:30</time><div class="schedule-main"><small>Track / Qualifying</small><h3>Qualifying runs</h3><p>Drivers put down their best runs ahead of the afternoon finale.</p></div><div class="schedule-location">Drift Arena</div></article>
+        <article class="schedule-row" data-category="paddock"><time class="schedule-time">15:00</time><div class="schedule-main"><small>Paddock / Show cars</small><h3>Build walk & awards</h3><p>Explore the display cars and take a closer look at standout builds.</p></div><div class="schedule-location">Show car zone</div></article>
+        <article class="schedule-row" data-category="track"><time class="schedule-time">16:30</time><div class="schedule-main"><small>Track / Finale</small><h3>Final battles & podium</h3><p>The final track sessions, followed by the day's closing presentation.</p></div><div class="schedule-location">Drift Arena</div></article>
+      </div>
+      <p class="schedule-note">Illustrative programme for a fictional event concept. Activities and times are not confirmed event information.</p>
+    </section>
+
+    <section class="venue-section" id="venue">
+      <div class="venue-inner">
+        <div class="venue-copy">
+          <p class="section-kicker">One venue. Everything in reach.</p>
+          <h2 class="section-title">Meet us at<br>the NEC.</h2>
+          <p>The DriftFest concept is set at the NEC Birmingham, with the Drift Arena, paddock, show car displays and food spaces brought together in one festival setting.</p>
+          <div class="venue-address"><strong>NEC Birmingham</strong><span>North Avenue, Marston Green, Birmingham</span></div>
+        </div>
+        <div class="venue-image-wrap">
+          <img src="https://images.pexels.com/photos/20449311/pexels-photo-20449311.jpeg?cs=srgb&amp;dl=pexels-daniqux-20449311.jpg&amp;fm=jpg" alt="Motorsport spectators watching a car drift around the circuit" loading="lazy">
+          <p class="photo-caption">Motorsport photography used as visual reference; this is not a photograph of a DriftFest event.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tickets-section" id="tickets">
+      <div class="section-head">
+        <div><p class="section-kicker">Choose your pass</p><h2 class="section-title">Make a day of it.</h2></div>
+        <p class="section-intro">Three example ways to experience the festival. These are concept packages and prices created for this website demo.</p>
+      </div>
+      <div class="ticket-grid">
+        <article class="ticket-card">
+          <span class="ticket-label">The essentials</span><h3>General<br>admission</h3><p class="ticket-price">£25<small>Example concept price</small></p>
+          <ul><li>Festival entry</li><li>Public viewing areas</li><li>Show car zone and food yard</li><li>Driver appearances</li></ul>
+          <button class="button button-secondary ticket-action" data-pass="General Admission">Select pass</button>
+        </article>
+        <article class="ticket-card featured">
+          <span class="ticket-label">Get closer</span><h3>Paddock<br>pass</h3><p class="ticket-price">£45<small>Example concept price</small></p>
+          <ul><li>Everything in General Admission</li><li>Designated paddock access</li><li>Closer look at selected builds</li><li>Paddock Q&A session</li></ul>
+          <button class="button ticket-action" data-pass="Paddock Pass">Select pass</button>
+        </article>
+        <article class="ticket-card">
+          <span class="ticket-label">The elevated view</span><h3>Drift deck<br>VIP</h3><p class="ticket-price">£75<small>Example concept price</small></p>
+          <ul><li>Everything in Paddock Pass</li><li>Elevated viewing area</li><li>VIP lounge concept</li><li>Priority entry concept</li></ul>
+          <button class="button button-secondary ticket-action" data-pass="Drift Deck VIP">Select pass</button>
+        </article>
+      </div>
+      <p class="tickets-note">Demo only: no real tickets are available, no payment will be taken and these prices are not real offers.</p>
+    </section>
+
+    <section class="faq-section">
+      <div class="faq-intro"><p class="section-kicker">Good to know</p><h2 class="section-title">The details.</h2><p>A few quick answers about the DriftFest website concept.</p></div>
+      <div class="faq-list">
+        <details><summary>Is DriftFest a real event?</summary><p>No. DriftFest is a fictional festival concept. There is no real event, ticket sale or booking.</p></details>
+        <details><summary>Where is the festival set?</summary><p>The concept is set at NEC Birmingham. This website is not affiliated with or endorsed by the NEC.</p></details>
+        <details><summary>Can I buy a ticket?</summary><p>No real tickets are on sale. The prices and ticket options are illustrative only; the buttons demonstrate a simple selection interaction.</p></details>
+        <details><summary>Are the photographs from DriftFest?</summary><p>No. The photographs are genuine motorsport images by independent photographers, used as visual references for this fictional concept. They do not show a DriftFest event.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div><a class="wordmark" href="#home">DRIFT<span>FEST</span></a><p class="footer-tagline">One venue. All the smoke. Your day, sorted.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="#experience">The festival</a><a href="#schedule">Schedule</a><a href="#venue">Venue</a><a href="#tickets">Tickets</a></nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="credits">Fictional festival concept · Photography: <a href="https://www.pexels.com/photo/car-in-drifting-competition-25637442/" target="_blank" rel="noopener">Jacob Moore</a>, <a href="https://www.pexels.com/photo/bmw-car-in-drifting-competition-20449311/" target="_blank" rel="noopener">Danique Veldhuis</a>, <a href="https://www.pexels.com/photo/a-car-is-drifting-on-a-track-15824808/" target="_blank" rel="noopener">PeopleByOwen</a>, <a href="https://www.pexels.com/photo/32305552/" target="_blank" rel="noopener">Mahsum Ograk</a>, <a href="https://www.pexels.com/photo/32493589/" target="_blank" rel="noopener">FBO Media</a> and <a href="https://www.pexels.com/" target="_blank" rel="noopener">Pexels</a>.</div>
+      <div>© 2027 DRIFTFEST CONCEPT</div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="ticket-modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="modal-close" type="button" aria-label="Close dialog">×</button>
+      <p class="section-kicker">DriftFest / Demo</p>
+      <h2 id="modal-title">Pass selected.</h2>
+      <p id="modal-message">This is a fictional website concept. Ticket selection is a demonstration only; no purchase or payment is possible.</p>
+      <button class="button modal-done" type="button">Got it</button>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav');
+      menuButton.addEventListener('click', () => {
+        const isOpen = nav.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        menuButton.textContent = isOpen ? '×' : '☰';
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open menu');
+        menuButton.textContent = '☰';
+      }));
+
+      const filters = [...document.querySelectorAll('.filter')];
+      const scheduleRows = [...document.querySelectorAll('.schedule-row')];
+      filters.forEach(button => button.addEventListener('click', () => {
+        const category = button.dataset.filter;
+        filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+        scheduleRows.forEach(row => { row.hidden = category !== 'all' && row.dataset.category !== category; });
+      }));
+
+      const modal = document.getElementById('ticket-modal');
+      const closeModal = () => { modal.hidden = true; document.body.style.overflow = ''; };
+      document.querySelectorAll('.ticket-action').forEach(button => button.addEventListener('click', () => {
+        document.getElementById('modal-title').textContent = button.dataset.pass + ' selected.';
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        modal.querySelector('.modal-done').focus();
+      }));
+      modal.querySelectorAll('.modal-close, .modal-done').forEach(button => button.addEventListener('click', closeModal));
+      modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape' && !modal.hidden) closeModal(); });
+    })();
+  </script>
+</body>
+</html>
